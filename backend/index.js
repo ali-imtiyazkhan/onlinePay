@@ -7,7 +7,7 @@ const rootRouter = require("./routes/index.js");
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(cors());
 app.use(express.json());
