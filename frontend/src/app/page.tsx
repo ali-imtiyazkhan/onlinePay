@@ -5,6 +5,7 @@ import BalanceCard from "./components/BalanceCard";
 import QuickActions from "./components/QuickAction";
 import RecentTransactions from "./components/RecentTransaction";
 import Footer from "./components/Footer";
+import Transfer from "./transaction/Transfer";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       </main>
 
       <Footer />
+      {/* <Transfer/> */}
     </div>
   );
 }
