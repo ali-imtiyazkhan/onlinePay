@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 
-
 export default function HistoryPage() {
   const [transactions, setTransactions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -31,23 +30,35 @@ export default function HistoryPage() {
     fetchHistory();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-
   return (
-    <div className="bg-gray-900 min-h-screen">
+    <div className="bg-gray-900 min-h-screen flex flex-col">
       <Header />
 
-      <div className="p-4">
+      <div className="flex-1 p-4">
         <h1 className="text-xl font-bold mb-4 text-white">Transaction History</h1>
-        {transactions.length === 0 ? (
+
+        {loading ? (
+          <div className="flex justify-center items-center h-64">
+            <p className="text-white text-lg">Loading...</p>
+          </div>
+        ) : transactions.length === 0 ? (
           <p className="text-white">No transactions found.</p>
         ) : (
           <ul className="space-y-3">
             {transactions.map((txn) => (
-              <li key={txn._id} className="p-3 border rounded shadow bg-gray-800 text-white">
+              <li
+                key={txn._id}
+                className="p-3 border rounded shadow bg-gray-800 text-white"
+              >
                 <p><b>Amount:</b> ₹{txn.amount}</p>
                 <p><b>Type:</b> {txn.type}</p>
                 <p><b>Date:</b> {new Date(txn.createdAt).toLocaleString()}</p>
+
+                {txn.type === "debit" ? (
+                  <p><b>Sent To:</b> {txn.toUser?.username || "Unknown User"}</p>
+                ) : (
+                  <p><b>Received From:</b> {txn.fromUser?.username || "Unknown User"}</p>
+                )}
               </li>
             ))}
           </ul>

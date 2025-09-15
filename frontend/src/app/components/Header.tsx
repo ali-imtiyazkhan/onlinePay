@@ -8,7 +8,7 @@ export default function Header() {
       </h1>
       <nav className="flex gap-6 text-sm sm:text-base font-medium">
         <a href="/" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Home</a>
-        <a href="/transactions" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Transactions</a>
+        <a href="/ViewHistory" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Transactions</a>
         <a href="/settings" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Settings</a>
         <a href="/Admin" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Admin</a>
       </nav>
